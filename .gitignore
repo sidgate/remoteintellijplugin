@@ -1,0 +1,21 @@
+
+# User-specific stuff
+.idea/**/workspace.xml
+
+.idea/**/uiDesigner.xml
+.idea/**/gradle.xml
+
+*.class
+
+# Log file
+*.log
+
+
+
+.gradle
+build/
+
+
+!gradle-wrapper.jar
+
+**/build/
