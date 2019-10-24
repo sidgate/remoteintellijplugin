@@ -3,8 +3,13 @@ package myToolWindow;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowFactory;
-import com.intellij.ui.content.Content;
-import com.intellij.ui.content.ContentFactory;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+
+import java.io.IOException;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,9 +20,24 @@ import com.intellij.ui.content.ContentFactory;
 public class MyToolWindowFactory implements ToolWindowFactory {
   // Create the tool window content.
   public void createToolWindowContent(Project project, ToolWindow toolWindow) {
-    MyToolWindow myToolWindow = new MyToolWindow(toolWindow);
+    /*MyToolWindow myToolWindow = new MyToolWindow(toolWindow);
     ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
     Content content = contentFactory.createContent(myToolWindow.getContent(), "", false);
-    toolWindow.getContentManager().addContent(content);
+    toolWindow.getContentManager().addContent(content);*/
+
+    final JFXPanel panel = new JFXPanel();
+    toolWindow.getComponent().add(panel);
+    Platform.runLater(() -> initFX(panel));
+  }
+
+  private void initFX(JFXPanel fxPanel) {
+    try {
+      FXMLLoader.setDefaultClassLoader(MyToolWindowFactory.class.getClassLoader());
+      Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
+
+      fxPanel.setScene(new Scene(root, 300, 275));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }

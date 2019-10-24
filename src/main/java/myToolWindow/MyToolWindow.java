@@ -1,8 +1,11 @@
 package myToolWindow;
 
 import com.intellij.openapi.wm.ToolWindow;
+import javafx.fxml.FXMLLoader;
 
 import javax.swing.*;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,10 +22,19 @@ public class MyToolWindow {
     private JLabel timeZone;
     private JPanel myToolWindowContent;
     private JLabel remoteResponse;
+    private JCheckBox checkBox1;
+	private JEditorPane editorPane;
 
     public MyToolWindow(ToolWindow toolWindow) {
+
         hideToolWindowButton.addActionListener(e -> toolWindow.hide(null));
         refreshToolWindowButton.addActionListener(e -> currentDateTime());
+		HTMLEditorKit kit = new HTMLEditorKit();
+		editorPane.setEditable(false);
+		editorPane.setEditorKit(kit);
+		Document doc = kit.createDefaultDocument();
+		editorPane.setDocument(doc);
+		editorPane.setText("<h1>hello</h1><p/><p><b>Sid</b></p>");
 
         this.currentDateTime();
     }
@@ -32,9 +44,12 @@ public class MyToolWindow {
         // Get current date and time
 
         try {
+
+
             BufferedReader stream = new BufferedReader(new InputStreamReader(new URL("http://localhost:8081/hello").openStream()));
             String response = stream.readLine();
-            remoteResponse.setText(response);
+
+
 
             Calendar instance = Calendar.getInstance();
             currentDate.setText(instance.get(Calendar.DAY_OF_MONTH) + "/"
