@@ -15,6 +15,7 @@ public class Controller implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		WebEngine engine = myWebView.getEngine();
-		engine.load("http://www.google.com");
+		engine.loadContent("<b>Hello world</b> <br><table><tr><td>col 1</td><td>col2</td></tr></table>");
+	//	engine.load("http://www.google.com");
 	}
 }

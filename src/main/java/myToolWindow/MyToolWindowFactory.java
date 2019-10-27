@@ -35,7 +35,7 @@ public class MyToolWindowFactory implements ToolWindowFactory {
       FXMLLoader.setDefaultClassLoader(MyToolWindowFactory.class.getClassLoader());
       Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
 
-      fxPanel.setScene(new Scene(root, 300, 275));
+      fxPanel.setScene(new Scene(root));
     } catch (IOException e) {
       e.printStackTrace();
     }

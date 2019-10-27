@@ -22,6 +22,6 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <WebView id="myWebView" fx:id="myWebView" prefHeight="200.0" prefWidth="200.0" />
+      <WebView id="myWebView" fx:id="myWebView"  />
    </children>
 </GridPane>

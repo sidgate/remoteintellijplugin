@@ -14,6 +14,22 @@
     <toolWindow id="Sample Calendar" secondary="true" icon="/myToolWindow/plus.png" anchor="right"
                 factoryClass="myToolWindow.MyToolWindowFactory"/>
 
+    <localInspection language="JAVA"
+                     displayName="SDK: '==' or '!=' used instead of 'equals()'"
+                     groupPath="Java"
+                     groupBundle="messages.InspectionsBundle"
+                     groupKey="group.names.probable.bugs"
+                     enabledByDefault="true"
+                     level="WARNING"
+                     implementationClass="myToolWindow.ComparingReferencesInspection"/>
+
   </extensions>
+  <actions>
+    <group id="MyPlugin.SampleMenu" text="Greeting" description="Greeting menu">
+      <add-to-group group-id="MainMenu" anchor="last"/>
+      <action id="Myplugin.Textboxes" class="HelloAction" text="Hello" description="Says hello"/>
+    </group>
+  </actions>
+
 
 </idea-plugin>
